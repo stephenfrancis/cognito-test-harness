@@ -76,23 +76,19 @@ const App = () => {
       <div>Pool Data: {JSON.stringify(poolData)}</div>
       <h2>Current User</h2>
       <pre>{JSON.stringify(cognitoUser, null, 2)}</pre>
-      {!cognitoUser && (
-        <form onSubmit={login}>
-          <div>
-            <span>User name:</span>
-            <input type="text" name="username" style={{ width: 200 }}></input>
-          </div>
-          <div>
-            <span>Password:</span>
-            <input
-              type="password"
-              name="password"
-              style={{ width: 200 }}
-            ></input>
-          </div>
-          <button type="submit">Log-in</button>
-        </form>
-      )}
+
+      <form onSubmit={login}>
+        <div>
+          <span>User name:</span>
+          <input type="text" name="username" style={{ width: 200 }}></input>
+        </div>
+        <div>
+          <span>Password:</span>
+          <input type="password" name="password" style={{ width: 200 }}></input>
+        </div>
+        {!cognitoUser && <button type="submit">Log-in</button>}
+      </form>
+
       {!!cognitoUser && <button onClick={logout}>Logout</button>}
     </div>
   );
